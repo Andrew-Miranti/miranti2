@@ -39,6 +39,19 @@ char* map_file(char *filename, int *length_out)
 	return (char *)file;
 }
 
+#define HISTOGRAM_SIZE 256
+
+__global__ void countLetters(char * file, unsigned * allHistogram, int length, int total) {
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
+    unsigned * histogram = allHistogram + index * HISTOGRAM_SIZE;
+    int startIndex = index * length / total;
+    int endIndex = (index+1) * length / total;
+    for (int i = startIndex; i < endIndex; ++i) {
+        histogram[file[i]]++;
+    }
+}
+
+
 int main(int argc, char *argv[]) 
 {
 	int length = 0;
@@ -49,11 +62,34 @@ int main(int argc, char *argv[])
 		argv = &argv[1];
 	}
 	char *file = map_file(argv[1], &length);
-	unsigned histogram[256] = {0};
+	unsigned histogram[HISTOGRAM_SIZE] = {0};
 
 	tick_count start = tick_count::now();
 
-	// Your code here! (and maybe elsewhere)
+    char * deviceFile = NULL;
+    cudaMalloc((void**)&deviceFile, length);
+    cudaMemcpy(deviceFile, file, length, cudaMemcpyHostToDevice);
+    unsigned * histograms = NULL;
+    int numBlocks = 4;
+    int numThreads = 4;
+    int totalThreads = numBlocks * numThreads;
+    size_t allHistogramSize = sizeof(unsigned) * totalThreads * HISTOGRAM_SIZE;
+    cudaMalloc((void**)&histograms, allHistogramSize);
+    cudaMemset(histograms, 0, allHistogramSize);
+    countLetters<<<numBlocks, numThreads>>>(deviceFile, histograms, length, totalThreads);
+    unsigned * hostHistograms = (unsigned*)malloc(allHistogramSize);
+    memset(hostHistograms, 0, allHistogramSize);
+
+    cudaMemcpy(hostHistograms, histograms, allHistogramSize, cudaMemcpyDeviceToHost);
+    cudaFree(deviceFile);
+    cudaFree(histograms);
+
+    for (int j = 0; j < totalThreads; ++j) {
+        for (int i = 0; i < HISTOGRAM_SIZE; ++i) {
+            histogram[i] += hostHistograms[HISTOGRAM_SIZE * j + i];
+        }  
+    }
+    free(hostHistograms);
 
 	tick_count end = tick_count::now();
 

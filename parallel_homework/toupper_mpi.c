@@ -52,7 +52,12 @@ int main(int argc, char *argv[])
 
 	double start = MPI_Wtime();
 
-	// Your code here!
+    //printf("Thread ID %d of %d\n", rank, size);
+    int startIndex = rank * length / size;
+    int endIndex = (rank + 1) * length / size;
+    for (int i = startIndex; i < endIndex; ++i) {
+        file[i] = toupper(file[i]);
+    }
 
 	double my_time = MPI_Wtime() - start;
 	MPI_Reduce(&my_time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);

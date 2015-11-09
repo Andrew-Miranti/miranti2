@@ -53,7 +53,9 @@ int main(int argc, char *argv[])
 
 	tick_count start = tick_count::now();
 
-	// Your code here!
+    for (int i = 0; i < length; ++i) {
+        histogram[file[i]]++;
+    }
 
 	tick_count end = tick_count::now();
 	printf("time = %f seconds\n", (end - start).seconds());  

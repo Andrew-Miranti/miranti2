@@ -16,7 +16,7 @@ using tbb::tick_count;
 char* map_file(char *filename, int *length_out) 
 {
 	struct stat file_stat;
-	int fd = open(filename, O_RDONLY);
+	int fd = open(filename, O_RDWR);
 	if (fd == -1) 
 	{
 		printf("failed to open file: %s\n", filename); 
@@ -28,7 +28,7 @@ char* map_file(char *filename, int *length_out)
 		exit(1);
 	}
 	off_t length = file_stat.st_size;
-	void *file = mmap(0, length, PROT_WRITE, MAP_PRIVATE, fd, 0);
+	void *file = mmap(0, length, PROT_WRITE, MAP_SHARED, fd, 0);
 	if (file == (void *)-1) 
 	{
 		printf("failed to stat file: %s\n", filename); 
@@ -46,7 +46,10 @@ int main(int argc, char *argv[])
 
 	tick_count start = tick_count::now();
 
-	// Your code here!
+    #pragma omp parallel for
+    for (int i = 0; i < length; ++i) {
+        file[i] = toupper(file[i]);
+    }
 
 	tick_count end = tick_count::now();
 	printf("time = %f seconds\n", (end - start).seconds());  

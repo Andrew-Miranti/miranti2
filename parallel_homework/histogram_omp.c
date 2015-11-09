@@ -50,10 +50,27 @@ int main(int argc, char *argv[])
 	}
 	char *file = map_file(argv[1], &length);
 	unsigned histogram[256] = {0};
+    
 
 	tick_count start = tick_count::now();
 
-	// Your code here!
+	#pragma omp parallel
+    {
+        unsigned threadHistogram[256] = {0};
+        int id = omp_get_thread_num();
+        int total = omp_get_num_threads();
+        int startIndex = length * id / total;
+        int endIndex = length * (id+1) / total;
+        for (int i = startIndex; i < endIndex; ++i) {
+            threadHistogram[file[i]]++;
+        }
+        #pragma omp critical 
+        {
+            for (int i = 0; i < 256; ++i) {
+                histogram[i] += threadHistogram[i];
+            }
+        }
+    }
 
 	tick_count end = tick_count::now();
 	printf("time = %f seconds\n", (end - start).seconds());  

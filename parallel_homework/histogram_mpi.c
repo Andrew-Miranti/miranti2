@@ -65,7 +65,25 @@ int main(int argc, char *argv[])
 
 	double start = MPI_Wtime();
 
-	// Your code here! (and maybe elsewhere)
+    int startIndex = length * rank / size;
+    int endIndex = length * (rank+1) / size;
+
+    for (int i = startIndex; i < endIndex; ++i) {
+        histogram[file[i]]++;
+    }
+
+    if (rank == 0) {
+        MPI_Status stat;
+        for (int i = 1; i < size; ++i) {
+            unsigned otherHistogram[256] = {0};
+            MPI_Recv(otherHistogram, 256, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &stat);
+            for (int j = 0; j < 256; ++j) {
+                histogram[j] += otherHistogram[j];
+            }
+        }
+    } else {
+        MPI_Send(histogram, 256, MPI_INT, 0, rank, MPI_COMM_WORLD);
+    }
 
 	double time = MPI_Wtime() - start;
 	MPI_Reduce(&time, &max_time, 1, MPI_DOUBLE, MPI_MAX, 0, MPI_COMM_WORLD);

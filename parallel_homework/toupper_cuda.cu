@@ -9,7 +9,6 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <omp.h>
-
 #include "tbb/tick_count.h"
 using tbb::tick_count;
 
@@ -39,16 +38,39 @@ char* map_file(char *filename, int *length_out)
 	return (char *)file;
 }
 
+__global__ void makeUpper(char * file, int length, int total) {
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
+    int startIndex = index * length / total;
+    int endIndex = (index+1) * length / total;
+    for (int i = startIndex; i < endIndex; ++i) {
+        file[i] = (file[i] >= 'a' && file[i] <= 'z') ? (file[i] - 'a' + 'A') : file[i];
+    }
+}
+
 int main(int argc, char *argv[]) 
 {
 	int length = 0;
 	char *file = map_file(argv[1], &length);
+    
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
 
-	tick_count start = tick_count::now();
+    cudaEventRecord(start);
+    char * cudaFile = NULL;
+    cudaMalloc((void**)&cudaFile, length);
+    cudaMemcpy(cudaFile, file, length, cudaMemcpyHostToDevice);
+    cudaEventRecord(start);
+    int numblocks = 4;
+    int numthreads = 64;
+    makeUpper<<<numblocks, numthreads>>>(cudaFile, length, numblocks * numthreads);
+    cudaEventRecord(stop);
+    cudaMemcpy(file, cudaFile, length, cudaMemcpyDeviceToHost);
+    cudaFree(cudaFile);
 
-	// Your code here! (and maybe elsewhere)
+    cudaEventSynchronize(stop);
+    float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
 
-	tick_count end = tick_count::now();
-
-	printf("time = %f seconds\n", (end - start).seconds());  
+	printf("time = %f milliseconds\n", milliseconds);  
 }
