@@ -15,7 +15,7 @@ using tbb::tick_count;
 char* map_file(char *filename, int *length_out) 
 {
 	struct stat file_stat;
-	int fd = open(filename, O_RDWR);
+	int fd = open(filename, O_RDONLY);
 	if (fd == -1) 
 	{
 		printf("failed to open file: %s\n", filename); 
@@ -27,7 +27,7 @@ char* map_file(char *filename, int *length_out)
 		exit(1);
 	}
 	off_t length = file_stat.st_size;
-	void *file = mmap(0, length, PROT_WRITE, MAP_SHARED, fd, 0);
+	void *file = mmap(0, length, PROT_WRITE, MAP_PRIVATE, fd, 0);
 	if (file == (void *)-1) 
 	{
 		printf("failed to stat file: %s\n", filename); 
@@ -56,13 +56,12 @@ int main(int argc, char *argv[])
     cudaEventCreate(&start);
     cudaEventCreate(&stop);
 
-    cudaEventRecord(start);
     char * cudaFile = NULL;
     cudaMalloc((void**)&cudaFile, length);
     cudaMemcpy(cudaFile, file, length, cudaMemcpyHostToDevice);
+    int numblocks = 4096;
+    int numthreads = 512;
     cudaEventRecord(start);
-    int numblocks = 4;
-    int numthreads = 64;
     makeUpper<<<numblocks, numthreads>>>(cudaFile, length, numblocks * numthreads);
     cudaEventRecord(stop);
     cudaMemcpy(file, cudaFile, length, cudaMemcpyDeviceToHost);

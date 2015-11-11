@@ -40,14 +40,13 @@ char* map_file(char *filename, int *length_out)
 }
 
 #define HISTOGRAM_SIZE 256
+#define HISTOGRAM_COUNT 1
 
-__global__ void countLetters(char * file, unsigned * allHistogram, int length, int total) {
+__global__ void countLetters(char * file, unsigned * allHistograms, int length, int total) {
     int index = blockIdx.x * blockDim.x + threadIdx.x;
-    unsigned * histogram = allHistogram + index * HISTOGRAM_SIZE;
-    int startIndex = index * length / total;
-    int endIndex = (index+1) * length / total;
-    for (int i = startIndex; i < endIndex; ++i) {
-        histogram[file[i]]++;
+    unsigned * histogram = allHistograms + ((HISTOGRAM_COUNT - 1) & index) * HISTOGRAM_SIZE; 
+    for (int i = index; i < length; i += total) {
+        atomicAdd(&histogram[file[i]], 1);
     }
 }
 
@@ -64,19 +63,25 @@ int main(int argc, char *argv[])
 	char *file = map_file(argv[1], &length);
 	unsigned histogram[HISTOGRAM_SIZE] = {0};
 
-	tick_count start = tick_count::now();
+    cudaEvent_t start, stop;
+    cudaEventCreate(&start);
+    cudaEventCreate(&stop);
+
 
     char * deviceFile = NULL;
     cudaMalloc((void**)&deviceFile, length);
     cudaMemcpy(deviceFile, file, length, cudaMemcpyHostToDevice);
     unsigned * histograms = NULL;
-    int numBlocks = 4;
-    int numThreads = 4;
+    int numBlocks = 65535;
+    int numThreads = 512;
     int totalThreads = numBlocks * numThreads;
-    size_t allHistogramSize = sizeof(unsigned) * totalThreads * HISTOGRAM_SIZE;
+    size_t allHistogramSize = sizeof(unsigned) * HISTOGRAM_COUNT * HISTOGRAM_SIZE;
     cudaMalloc((void**)&histograms, allHistogramSize);
     cudaMemset(histograms, 0, allHistogramSize);
+    cudaEventRecord(start);
     countLetters<<<numBlocks, numThreads>>>(deviceFile, histograms, length, totalThreads);
+    cudaEventRecord(stop);
+    cudaEventSynchronize(stop);
     unsigned * hostHistograms = (unsigned*)malloc(allHistogramSize);
     memset(hostHistograms, 0, allHistogramSize);
 
@@ -84,16 +89,17 @@ int main(int argc, char *argv[])
     cudaFree(deviceFile);
     cudaFree(histograms);
 
-    for (int j = 0; j < totalThreads; ++j) {
+    for (int j = 0; j < HISTOGRAM_COUNT; ++j) {
         for (int i = 0; i < HISTOGRAM_SIZE; ++i) {
             histogram[i] += hostHistograms[HISTOGRAM_SIZE * j + i];
         }  
     }
     free(hostHistograms);
 
-	tick_count end = tick_count::now();
+	float milliseconds = 0;
+    cudaEventElapsedTime(&milliseconds, start, stop);
 
-	printf("time = %f seconds\n", (end - start).seconds());  
+    printf("%f seconds\n", milliseconds / 1000);
 
 	if (print) 
 	{
