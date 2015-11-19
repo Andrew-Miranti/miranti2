@@ -13,14 +13,16 @@ void runProgram(char * program, char * input, char * serverIP, char * arguments[
     int inputFile = open(input, O_RDONLY);
     int output[2];
     int error[2];
+    pipe(output);
+    pipe(error);
     pid_t childPid = fork();
     if (!childPid) {
         close(output[0]);
-        close(errors[0]);
+        close(error[0]);
         setenv("server_ip", serverIP, 0);
         dup2(inputFile,  0);
         dup2(output[1], 1);
-        dup2(error[1], 1);
+        dup2(error[1], 2);
         execvpe(program, arguments, environ);
         perror("EXEC FAILED\n");
         exit(2);
@@ -28,10 +30,20 @@ void runProgram(char * program, char * input, char * serverIP, char * arguments[
         FILE * clientOutput = fdopen(output[0], "r");
         FILE * clientError = fdopen(error[0], "r");
         
+        char * line = NULL;
+        size_t length = 0;
+        while (getline(&line, &length, clientOutput) > 0) {
+            printf(line);
+        }
+        free(line);
+
         fclose(clientOutput);
         fclose(clientError);
+        close(output[1]);
+        close(error[1]);
+        close(inputFile);
+        fflush(NULL);
     }
-
     waitpid(childPid, NULL, 0);
 }
 
