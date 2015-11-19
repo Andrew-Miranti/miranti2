@@ -1,0 +1,4953 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   GRADE REPORT
+  </title>
+  <style>
+   nav, header, section, footer, div {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			width: 100%;
+		}
+
+		textarea {
+			background-color: black;
+			color: white;
+			font-family: monospace;
+		}
+
+		.two_column {
+			-webkit-column-count: 2; /* Chrome, Safari, Opera */
+		    -moz-column-count: 2; /* Firefox */
+		    column-count: 2;
+		}
+
+		.result {
+			text-align: center;
+			margin-left: auto;
+			margin-right: auto;
+			width: 60%;
+		}
+		
+		.testcase {
+			padding-top: 2.5%;
+			padding-bottom: 2.5%;
+			border: 1px solid black;
+		}
+
+		.pass {
+			color: green;
+		}
+		
+		.fail {
+			color: red;
+		}
+
+		.hidden {
+			display: none;
+		}
+		
+		.visible {
+			display: visible;
+			-webkit-animation: fadein 2s; /* Chrome, Safari, Opera */
+		}
+  </style>
+ </head>
+ <body onhashchange="load();" onload="load();">
+  <!-- Navigation -->
+  <nav>
+   <button onclick="incrementResults(-1)">
+    Previous Results
+   </button>
+   <!-- Selector gets populated by Beautiful Soup 4 -->
+   <select id="selector" onchange="changeResults(this.value)">
+    <option selected="selected" value="Chart">
+     Chart
+    </option>
+    <option value="0">
+     2015-10-17 16:51:17.768742
+    </option>
+    <option value="1">
+     2015-10-18 13:28:16.426063
+    </option>
+    <option value="2">
+     2015-10-18 18:28:07.539022
+    </option>
+    <option value="3">
+     2015-10-19 13:32:14.573022
+    </option>
+    <option value="4">
+     2015-10-19 15:37:37.338014
+    </option>
+    <option value="5">
+     2015-10-19 20:29:07.291167
+    </option>
+    <option value="6">
+     2015-10-20 01:28:22.777966
+    </option>
+    <option value="7">
+     2015-10-21 00:48:50.870678
+    </option>
+    <option value="8">
+     2015-10-22 02:04:37.771607
+    </option>
+    <option value="9">
+     2015-10-24 19:29:21.599011
+    </option>
+    <option value="10">
+     2015-10-25 17:09:11.683229
+    </option>
+    <option value="11">
+     2015-10-26 03:02:49.211446
+    </option>
+    <option value="12">
+     2015-10-26 16:50:41.540544
+    </option>
+    <option value="13">
+     2015-10-26 21:29:39.280005
+    </option>
+    <option value="14">
+     2015-10-27 00:46:24.551702
+    </option>
+    <option value="15">
+     2015-10-28 02:54:04.801999
+    </option>
+    <option value="16">
+     2015-10-29 03:35:55.452867
+    </option>
+   </select>
+   <button onclick="incrementResults(1)">
+    Next Results
+   </button>
+  </nav>
+  <div id="disclaimer" style="width:60%; text-align:left">
+   <h2>
+    <span style="color:red;">
+     Disclaimer:
+    </span>
+   </h2>
+   This autograder is a preliminary assessment of your program's correctness. Your grade may change UP OR DOWN based on the CORRECTNESS OF YOUR PROGRAM. We make every effort to ensure that our autograder is 'smart' enough to not count off for simple things like grammar but, in doing so, we may inadvertently allow for incorrect code to be counted as correct. If we have to change our script to better reflect the CORRECTNESS OF YOUR PROGRAM, we will run the script on EVERY TESTCASE and update EVERY STUDENT'S AUTOGRADER OUTPUT to ensure fairness to all students. Thanks for understanding!
+   <br/>
+   <br/>
+   <span style="color:red;">
+    Acedemic Integrity:
+   </span>
+   A reminder the University of Illinois and the department of computer science has a
+   <a href="https://cs.illinois.edu/current-students/undergraduates/policies-and-procedures-0/honor-code-and-academic-integrity" target="_blank">
+    policy
+   </a>
+   about what is allowed regarding collaboration and publishing of solutions. i.e. Your score should be based on your own work and you may not publish your solutions or leave them in 'plain view'. For this MP, the code you submit must be your own work i.e. entirely your own work product.
+   <br/>
+   <span style="color:green;">
+    Rule of Thumb
+   </span>
+   - If at any point you can not reproduce the code you have submitted, then you have cheated. We run an in house plagiarism detector (not MOSS) and we have caught students.
+   <br/>
+   <br/>
+   - CS 241 Staff
+  </div>
+  <!-- Results -->
+  <section id="results">
+   <div id="carousel">
+    <h1>
+     Results
+    </h1>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-17 16:51:17.768742
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-18 13:28:16.426063
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-18 18:28:07.539022
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-19 13:32:14.573022
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-19 15:37:37.338014
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-19 20:29:07.291167
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-20 01:28:22.777966
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-21 00:48:50.870678
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 25041
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-22 02:04:37.771607
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_crypt
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that crypt was not used
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that two threads run at same time
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that four threads run at same time, cracking 4 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_12_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time cracking 12 passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_no_busy_wait_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't busy wait
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_queue_by_output
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that your queue works properly by checking order of outputs
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_imbalanced_load
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test the order of output of imbalanced loads
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_medium
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a couple of passwords
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_hard
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a lot of password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_crypt_r_count
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test correct password and crypt_r() count
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 28324
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-24 19:29:21.599011
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+FAILED TO COMPILE!
+cracker2.c: In function &lsquo;runCracker&rsquo;:
+cracker2.c:73:5: error: unknown type name &lsquo;thread_info_t&rsquo;
+     thread_info_t * threadInfo = (thread_info_t *)info;
+     ^
+cracker2.c:73:35: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                   ^
+cracker2.c:73:35: note: each undeclared identifier is reported only once for each function it appears in
+cracker2.c:73:50: error: expected expression before &lsquo;)&rsquo; token
+     thread_info_t * threadInfo = (thread_info_t *)info;
+                                                  ^
+cracker2.c:75:22: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     sscanf(threadInfo-&gt;line, "%8s %13s %8s", toCrack-&gt;userInfo.username, toCrack-&gt;userInfo.hashed, toCrack-&gt;userInfo.known);
+                      ^
+cracker2.c:80:42: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                          ^
+cracker2.c:80:67: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     getSubrange(unknownLength, threadInfo-&gt;threadCount, threadInfo-&gt;id, &amp;toCrack-&gt;firstIndex, &amp;toCrack-&gt;count);
+                                                                   ^
+cracker2.c:81:32: error: request for member &lsquo;id&rsquo; in something not a structure or union
+     doCrack(toCrack, threadInfo-&gt;id);
+                                ^
+cracker2.c:83:20: error: request for member &lsquo;line&rsquo; in something not a structure or union
+     free(threadInfo-&gt;line);
+                    ^
+cracker2.c: In function &lsquo;start&rsquo;:
+cracker2.c:106:13: error: unknown type name &lsquo;thread_info_t&rsquo;
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+             ^
+cracker2.c:106:59: error: &lsquo;thread_info_t&rsquo; undeclared (first use in this function)
+             thread_info_t * threadInfo = calloc(1, sizeof(thread_info_t));
+                                                           ^
+cracker2.c:107:23: error: request for member &lsquo;threadCount&rsquo; in something not a structure or union
+             threadInfo-&gt;threadCount = thread_count;
+                       ^
+cracker2.c:108:23: error: request for member &lsquo;id&rsquo; in something not a structure or union
+             threadInfo-&gt;id = i + 1;
+                       ^
+cracker2.c:109:23: error: request for member &lsquo;line&rsquo; in something not a structure or union
+             threadInfo-&gt;line = strdup(line);
+                       ^
+make: *** [cracker2.o] Error 1
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 28663
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-25 17:09:11.683229
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+Did not spawn correct number of threads
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Found tsan warnings
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 29085
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-26 03:02:49.211446
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+Did not spawn correct number of threads
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Timeout :(
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 29085
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-26 16:50:41.540544
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+Did not spawn correct number of threads
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Timeout :(
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 30042
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-26 21:29:39.280005
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 30042
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-27 00:46:24.551702
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 30042
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-28 02:54:04.801999
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="fail" id="score">
+        Score: 0.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Timeout :(
+      </textarea>
+     </div>
+    </div>
+    <div class="visible result" id="result_div">
+     <div class="two_column">
+      <h2 id="revision">
+       Revision: 30042
+      </h2>
+      <h2 id="timestamp">
+       Time: 2015-10-29 03:35:55.452867
+      </h2>
+     </div>
+     <br/>
+     <br/>
+     <br/>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_valid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single valid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_one_invalid_password
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single invalid password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_two_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 2 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_four_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 4 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_13_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 5.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that 13 threads run at same time, cracking 1 password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_use_same_threads
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that same threads were used for second password
+Trying to compile your code...
+Successfully compiled your code..
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_eof_end
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that the program doesn't exit until EOF is found
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_sanity
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test to check that no fix-sized buffer or recursion is used.
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_tsan
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test tsan doesnt throw warnings
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_early_exit
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test that program stops when 1 thread finds password
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+     <div class="testcase" id="testcase_div">
+      <div class="two_column">
+       <h3 id="testcase">
+        TestCase: test_memory_easy
+       </h3>
+       <h3 class="pass" id="score">
+        Score: 1.0
+       </h3>
+      </div>
+      <h4>
+       Output Log
+      </h4>
+      <textarea cols="80" id="output_log" rows="15">
+       Test a single password with memory checks
+Trying to compile your code...
+Successfully compiled your code..
+Success :)
+      </textarea>
+     </div>
+    </div>
+   </div>
+  </section>
+  <script type="text/javascript">
+   function getDirectChildren(){
+			var carousel = document.getElementById('carousel');
+			var child_divs = carousel.getElementsByTagName('div');
+			var direct_children = [];
+			for (i=0; i<child_divs.length;i++){
+				var className = child_divs[i].getAttribute("class")
+				if (className == "visible result" || className == "hidden result"){
+					direct_children.push(child_divs[i]);
+				}
+			}
+			return direct_children;
+		}
+
+		function getCurrentResultIndex(){
+			var direct_children = getDirectChildren();
+			var current_index = -1;
+			for (i=0; i<direct_children.length;i++){
+				var div = direct_children[i];
+				if(div.getAttribute("class") == "visible result"){
+					current_index = i;
+					break;
+				}
+			}
+			return current_index;
+		}
+
+		function incrementResults(amount){
+			var direct_children = getDirectChildren();
+			var current_index = getCurrentResultIndex();
+			var next_index = ((current_index+amount)%direct_children.length+direct_children.length)%direct_children.length;
+			change_page(next_index);
+		}
+
+		function changeResults(destination){
+			var direct_children = getDirectChildren();
+			var current_index = getCurrentResultIndex();
+			var diff = destination - current_index;
+			incrementResults(diff);
+		}
+
+		function load(){
+			var page_number = location.hash.split("#")[1];
+			if(page_number == null){
+				change_page(0);
+				incrementResults(-1);
+			}
+			if(!isNaN(page_number)){
+				change_page(parseInt(page_number));
+			}
+		}
+
+		function change_page(page_number){
+			if(page_number == "Chart"){
+				window.location.replace("thumbs.html");
+				return;
+			}
+			direct_children = getDirectChildren();
+			for (i=0; i<direct_children.length;i++){
+				var div = direct_children[i];
+				div.className = "hidden result";
+			}
+			next_div = direct_children[page_number];
+			next_div.className = "visible result";
+			document.getElementById('selector').value = page_number.toString();
+			location.hash = "#"+page_number.toString();
+		}
+  </script>
+ </body>
+</html>

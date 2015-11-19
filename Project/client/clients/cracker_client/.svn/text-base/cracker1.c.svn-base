@@ -1,0 +1,116 @@
+#include "cracker1.h"
+#include "common.h"
+
+
+int success = 0;
+int total = 0;
+double totalTime = 0.0;
+pthread_mutex_t accumulatorLock;
+
+queue_t queue;
+
+void doCrack(user_t * next, int id) {
+    printf("Thread %d: Start %s\n", id, next->username);
+    double start_time = getTime();
+
+    char test_pw[9];
+    strcpy(test_pw, next->known);
+
+    // unknown_chars will point to the part of the password that is unknown
+    char *unknown_chars = test_pw + getPrefixLength(test_pw);
+    setStringPosition(unknown_chars, 0);
+
+    int found = 0;
+    int hash_count = 0;
+    struct crypt_data cdata;
+    cdata.initialized = 0;
+
+    do {
+        const char *hashed = crypt_r(test_pw, "xx", &cdata);
+
+        // uncomment this if you want to see the hash function doing its thing
+        // printf("%s -> %s\n", test_pw, hashed);
+        hash_count++;
+        found = !strcmp(hashed, next->hashed);
+    } while (!found && incrementString(unknown_chars));
+
+    double elapsed = getTime() - start_time;
+
+    pthread_mutex_lock(&accumulatorLock);
+    total++;
+    //totalTime += elapsed;
+    if (found) {
+        success++;
+        printf("Thread %d: Password for %s is %s (%d hashes in %.2f seconds)\n", id, next->username,
+                test_pw, hash_count, elapsed);
+    } else {
+        printf("Thread %d: Password for %s not found (%d hashes in %.2f seconds)\n", id, next->username,
+                hash_count, elapsed);
+    }
+    pthread_mutex_unlock(&accumulatorLock);
+}
+
+void * pullAndCrack(void * input) {
+    user_t * next = NULL;
+    while (1) {
+        next = queue_pull(&queue);
+        if (!next->username[0]) {
+            queue_push(&queue, next);
+            break;
+        }
+        doCrack(next, (int)input);
+        free(next);
+    }
+
+    return NULL;
+}
+
+void crackAsync(queue_t * queue, char * line) {
+    user_t * toCrack = calloc(1, sizeof(user_t));
+    sscanf(line, "%8s %13s %8s", toCrack->username, toCrack->hashed, toCrack->known);
+    queue_push(queue, toCrack);
+}
+
+int start(int thread_count) { 
+    pthread_mutex_init(&accumulatorLock, NULL);
+    queue_init(&queue, 256);
+    pthread_t * threads = calloc(thread_count, sizeof(pthread_t));
+
+    int i;
+    for (i = 0; i < thread_count; ++i) {
+        pthread_create(&threads[i], NULL, pullAndCrack, (void*)(long)(i+1));
+    }
+
+    size_t buf_len = 0;
+    char *line = NULL;
+    //double start_time = getTime();
+
+    while (getline(&line, &buf_len, stdin) != -1) {
+        crackAsync(&queue, line);
+    }
+
+    user_t * poison = calloc(1, sizeof(user_t));
+    queue_push(&queue, poison);
+
+    free(line);
+    for (i = 0; i < thread_count; ++i) {
+        pthread_join(threads[i], NULL);
+    }
+    printf("%d passwords recovered, %d failed.\n", success, (total - success));
+    //printf("Total time: %.2f seconds.\n", getTime() - start_time);
+    free(threads);
+    queue_destroy(&queue);
+    free(poison);
+    pthread_mutex_destroy(&accumulatorLock);
+    return 0;
+}
+
+/*int main(int argc, char * argv[]) {
+    int threadsToStart = 4;
+    if (argc > 1) {
+        threadsToStart = (int)strtol(argv[1], NULL, 10);
+    }
+    start(threadsToStart);
+    pthread_mutex_destroy(&accumulatorLock);
+    return 0;
+}*/

@@ -1,0 +1,18 @@
+EXECS=client
+CFLAGS=-g -Wall -Wextra -Wno-unused-parameter -pthread -std=c99
+# CC=clang $(CFLAGS)
+CC=gcc $(CFLAGS)
+LIBS=-lcrypt -lrt
+
+all: $(EXECS)
+
+client: client_wrapper.o
+	$(CC) $^ $(LIBS) -o $@
+
+client_wrapper.o: distributed.h client_wrapper.c
+
+%.o: %.c
+	$(CC) -c $<
+
+clean:
+	rm -f *.o $(EXECS) *~
