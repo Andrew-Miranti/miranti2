@@ -101,7 +101,7 @@ void getClient() {
 
 void executeClient() {
     system(decompressCommand);
-    
+    execl("./client_wrapper", "./client_wrapper", NULL); 
 }
 
 int main(int argc, char * argv[]) {
