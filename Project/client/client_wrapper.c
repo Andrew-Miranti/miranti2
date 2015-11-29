@@ -27,6 +27,10 @@ void runProgram(char * program, char * input, char * serverIP, char * arguments[
         perror("EXEC FAILED\n");
         exit(2);
     } else {
+
+        close(output[1]);
+        close(error[1]);
+        close(inputFile);
         FILE * clientOutput = fdopen(output[0], "r");
         FILE * clientError = fdopen(error[0], "r");
         
@@ -39,9 +43,6 @@ void runProgram(char * program, char * input, char * serverIP, char * arguments[
 
         fclose(clientOutput);
         fclose(clientError);
-        close(output[1]);
-        close(error[1]);
-        close(inputFile);
         fflush(NULL);
     }
     waitpid(childPid, NULL, 0);
