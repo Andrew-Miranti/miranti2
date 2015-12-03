@@ -3,18 +3,27 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <sys/stat.h>
 #include <sys/socket.h>
+#include <sys/wait.h>
 #include <libssh2.h>
 #include <libssh2_sftp.h>
 #include <netdb.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include "distributed.h"
 
 const char * serverAddress = "127.0.0.1";
 const char * serverFilePath = "~/client.tar.gz";
 const char * clientFilePath = "./client.tar.gz";
+const char * client = "./client";
 const char * port = "2000";
+const char * dataPort = "2001";
 const char * decompressCommand = "tar -xvfz client.tar.gz";
-
+const char * dataRequest = "DIS_GET_INPUT";
+const size_t requestLen = 14;
+const char * wrapperCommand = "./client_wrapper . inputFile.txt 127.0.0.1";
+const char * inputFile = "inputFile.txt";
 
 void initLibsshOrDie() {
     int result = libssh2_init(0);
@@ -82,26 +91,50 @@ void getClient() {
     //const char * fingerprint = libssh2_hostkey_hash(session, LIBSSH_HOSTKEY_HASH_SHA1);
     //TODO: Match the fingerprint against something.
     LIBSSH2_SFTP * sftpSession = makeSFTPSession(session);
-    LIBSSH2_SFTP_HANDLE * fileHandle = libssh2_sftp_open(sftpSession, serverFilePath, LIBSSH_FXF_READ, 0);
+    LIBSSH2_SFTP_HANDLE * fileHandle = libssh2_sftp_open(sftpSession, serverFilePath, LIBSSH2_FXF_READ, 0);
     LIBSSH2_SFTP_ATTRIBUTES fileAttributes;
-    libssh2_sftp_fstat(fileHandle, &fileAttributes, 0);
+    libssh2_sftp_fstat(fileHandle, &fileAttributes);
     char * filedata = malloc((size_t)fileAttributes.filesize);
-    libssh_sftp_read(fileHandle, filedata, fileAttributes.filesize);
+    libssh2_sftp_read(fileHandle, filedata, fileAttributes.filesize);
     int fileFd = open(clientFilePath, O_CREAT | O_TRUNC, O_WRONLY);
     write(fileFd, filedata, fileAttributes.filesize);
     close(fileFd);
     free(filedata);
-    libssh_sftp_close(fileHandle);
-    libssh_sftp_shutdown(sftpSession);
-    libssh_session_disconnect(session, "Done.\n");
-    libssh_session_free(session);
+    libssh2_sftp_close(fileHandle);
+    libssh2_sftp_shutdown(sftpSession);
+    libssh2_session_disconnect(session, "Done.\n");
+    libssh2_session_free(session);
     freeaddrinfo(serverInfo);
     close(sockFd);
 }
 
+#define PREDICTED_LENGTH 512
+
 void executeClient() {
-    system(decompressCommand);
-    execl("./client_wrapper", "./client_wrapper", NULL); 
+    system(decompressCommand); 
+	connectToServer(serverAddress, dataPort);	
+	char * result;
+	size_t resultLen;
+	do {
+		result = NULL;
+		resultLen = requestFromServer(dataRequest, requestLen, PREDICTED_LENGTH, &result);
+		int inputFileFd = open(inputFile, O_CREAT | O_TRUNC);
+		write(inputFileFd, result, resultLen);
+		close(inputFileFd);
+		free(result);
+		pid_t pid = fork();
+		if (pid == 0) {
+			execl("./client_wrapper", "./client_wrapper", client, inputFile, serverAddress, NULL);
+			perror("ExecFailed\n");
+			exit(1);  
+		} else if (pid > 0) {
+			int status;
+			waitpid(&pid, &status, 0);
+		} else {
+			perror("Fork failed\n");
+			exit(EXIT_FAILURE);
+		}
+	} while (resultLen > 0);
 }
 
 int main(int argc, char * argv[]) {

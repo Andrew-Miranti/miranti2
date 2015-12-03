@@ -1,12 +1,11 @@
 EXECS=client_wrapper client
 CFLAGS=-g -Wall -Wextra -Wno-unused-parameter -pthread -std=c99
-# CC=clang $(CFLAGS)
 CC=gcc $(CFLAGS)
-LIBS=-lcrypt -lrt
+LIBS=-lcrypt -lrt -lssh2
 
 all: $(EXECS)
 
-client: client_wrapper client.o
+client: client.o distributed.o
 	$(CC) $^ $(LIBS) -o $@
 
 client.o: client.c

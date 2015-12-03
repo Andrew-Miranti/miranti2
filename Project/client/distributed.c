@@ -5,16 +5,17 @@ int serverFd = -1;
 
 int connectToServer(const char * serverIP, const char * port) {
     serverFd = socket(AF_INET, SOCK_STREAM, 0);
-    struct addrinfo hints, * results;
+    struct addrinfo hints, * result;
     memset(&hints, 0, sizeof(hints));
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
+	getaddrinfo(serverIP, port, &hints, &result);
     connect(serverFd, result->ai_addr, result->ai_addrlen);
-    freeaddrinfo(results);
+    freeaddrinfo(result);
     return serverFd;
 }
 
-void sendToServer(const char * data, const size_t count) {
+void sendToServer(const void * data, const size_t count) {
     write(serverFd, data, count);
 }
 
@@ -22,8 +23,8 @@ size_t requestFromServer(const char * request, const size_t requestLen, const si
     sendToServer(request, requestLen);
     size_t requestLength = hintLength > MIN_LENGTH ? hintLength : MIN_LENGTH;
     size_t outputLength = 0;
-    char * output = malloc(sizeof(char), requestLength);
-    char * readBuffer = malloc(sizeof(char), requestLength);
+    char * output = calloc(sizeof(char), requestLength);
+    char * readBuffer = calloc(sizeof(char), requestLength);
     int done = 0;
     while (!done) {
         memset(readBuffer, 0, requestLength);
@@ -36,7 +37,7 @@ size_t requestFromServer(const char * request, const size_t requestLen, const si
         } else {
             done = 1;
         }
-        realloc(output, outputLength);
+        output = realloc(output, outputLength);
         memcpy(output+oldOutputLength, readBuffer, charactersRead);
     }
     *outputBuffer = output;
@@ -44,7 +45,7 @@ size_t requestFromServer(const char * request, const size_t requestLen, const si
     return outputLength;
 }
 
-int disconnectFromServer() {
+void disconnectFromServer() {
     close(serverFd);
     serverFd = -1;
 }
