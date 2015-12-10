@@ -1,0 +1,40 @@
+Grade report for miranti2
+===============================
+
+Part 1
+
+	(a) [10 / 10] toUpper in OpenMP
+		[6 / 6] for correctness
+		[2 / 2] for time comparable to serial solution
+		[2 / 2] for parallel speedup
+
+	(b) [10 / 10] toUpper in MPI
+		[6 / 6] for correctness
+		[2 / 2] for time comparable to serial solution
+		[2 / 2] for parallel speedup
+
+	(c) [10 / 10] toUpper in CUDA
+		[6 / 6] for correctness
+		[2 / 2] for time comparable to serial solution
+		[2 / 2] for parallel speedup
+
+Part 2
+
+	(a) [5 / 5] Serial histogram
+		[5 / 5] for correctness
+
+	(b) [15 / 15] histogram in OpenMP
+		[9 / 9] for correctness
+		[3 / 3] for time comparable to serial solution
+		[3 / 3] for parallel speedup
+
+	(c) [25 / 25] histogram in MPI
+		[15 / 15] for correctness
+		[5 / 5] for time comparable to serial solution
+		[5 / 5] for parallel speedup
+
+	(d) [25 / 25] histogram in CUDA
+		[25 / 25] for correctness
+
+
+Total: [100 / 100]
