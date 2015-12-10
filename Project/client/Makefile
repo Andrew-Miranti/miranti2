@@ -10,10 +10,10 @@ client: client.o distributed.o
 
 client.o: client.c
 
-client_wrapper: client_wrapper.o
+client_wrapper: client_wrapper.o distributed.o
 	$(CC) $^ $(LIBS) -o $@
 
-client_wrapper.o: distributed.h client_wrapper.c
+client_wrapper.o: client_wrapper.c
 
 distributed.o: distributed.c
 
@@ -21,4 +21,5 @@ distributed.o: distributed.c
 	$(CC) -c $<
 
 clean:
-	rm -f *.o $(EXECS) *~
+	rm -f *.o $(EXECS) *~ client.tar.gz
+	rm -rf clientFolder/*

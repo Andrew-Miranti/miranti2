@@ -10,7 +10,13 @@ int connectToServer(const char * serverIP, const char * port) {
     hints.ai_family = AF_INET;
     hints.ai_socktype = SOCK_STREAM;
 	getaddrinfo(serverIP, port, &hints, &result);
-    connect(serverFd, result->ai_addr, result->ai_addrlen);
+    int connectResult = connect(serverFd, result->ai_addr, result->ai_addrlen);
+	if (connectResult) {
+		perror("Connect failed\n");
+		exit(EXIT_FAILURE);
+	} else {
+		printf("Connected with fd %d\n", serverFd);
+	}
     freeaddrinfo(result);
     return serverFd;
 }

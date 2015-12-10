@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netdb.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int connectToServer(const char * serverIP, const char * port); 
 void sendToServer(const void * data, const size_t size);
