@@ -1,0 +1,193 @@
+#include "cracker2.h"
+
+sig_atomic_t stop = 0;
+sig_atomic_t terminateThreads = 0;
+sig_atomic_t totalHashes = 0;
+int total = 0;
+int success = 0;
+char * password = NULL;
+pthread_mutex_t accumulatorLock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t stopLock = PTHREAD_MUTEX_INITIALIZER;
+pthread_mutex_t termLock = PTHREAD_MUTEX_INITIALIZER;
+pthread_cond_t mainWait = PTHREAD_COND_INITIALIZER;
+pthread_cond_t threadsWait = PTHREAD_COND_INITIALIZER;
+
+/* Compute the subrange that a thread should work on.
+     unknown_letter_count - The number of letters in the password that
+       are not known.
+     thread_count - The number of worker threads.
+     thread_id - My thread ID, where the IDs start at 1.
+     start_index - (output parameter) This will be set to the index of
+       the first possible password this thread should try.
+     count - (output parameter) This will be set to the number of
+       passwords this thread should try.
+*/
+void getSubrange(int unknown_letter_count, int thread_count, int thread_id,
+                 long *start_index, long *count) {
+  int i;
+  long max = 1, end_index;
+  for (i=0; i < unknown_letter_count; i++) max *= 26;
+  *start_index = max * (thread_id - 1) / thread_count;
+  end_index = max * thread_id / thread_count;
+  if (end_index > max)
+    end_index = max;
+  *count = end_index - *start_index;
+}
+
+void doCrack(parallel_user_t * parallel_info, int id) {
+    user_t * next = &parallel_info->userInfo;
+
+    char test_pw[9];
+    strcpy(test_pw, next->known);
+
+    // unknown_chars will point to the part of the password that is unknown
+    char *unknown_chars = test_pw + getPrefixLength(test_pw);
+    setStringPosition(unknown_chars, parallel_info->firstIndex);
+    printf("Thread %d: Start %s at %ld (%s)\n", id, next->username, parallel_info->firstIndex, test_pw);
+
+    int found = 0;
+    int hash_count = 0;
+    struct crypt_data cdata;
+    cdata.initialized = 0;
+
+    do {
+		pthread_mutex_lock(&stopLock);
+		if (stop) {
+			pthread_mutex_unlock(&stopLock);
+			break;
+		}
+		pthread_mutex_unlock(&stopLock);
+        const char *hashed = crypt_r(test_pw, "xx", &cdata);
+
+        // uncomment this if you want to see the hash function doing its thing
+        // printf("%s -> %s\n", test_pw, hashed);
+        hash_count++;
+        found = !strcmp(hashed, next->hashed);
+    } while (!found && incrementString(unknown_chars) && hash_count < parallel_info->count);
+
+
+    char * exitString = (found ? "found" : (stop ? "cancelled" : "end"));
+    printf("Thread %d: Stop after %d iterations (%s)\n", id, hash_count, exitString);
+
+    if (found) {
+        password = strdup(test_pw);
+    }
+
+    pthread_mutex_lock(&accumulatorLock);
+    totalHashes += hash_count;
+    pthread_mutex_unlock(&accumulatorLock);
+
+	pthread_mutex_lock(&stopLock);
+    if (found) {
+        stop = 1;
+		pthread_mutex_unlock(&stopLock);
+	} else {
+		pthread_mutex_unlock(&stopLock);
+	}
+
+	pthread_cond_broadcast(&mainWait);
+
+	    
+}
+
+void * runCracker(void * info) {        
+		thread_info_t * threadInfo = (thread_info_t *)info;
+		while (1) {
+				pthread_mutex_lock(&threadInfo->mutex);
+				while (threadInfo->line == NULL && !terminateThreads) {pthread_cond_wait(&threadsWait, &threadInfo->mutex);}
+				pthread_mutex_lock(&termLock);
+						if (terminateThreads) {
+								pthread_mutex_unlock(&termLock);
+								break;
+						}
+				pthread_mutex_unlock(&termLock);
+
+				parallel_user_t * toCrack = calloc(1, sizeof(parallel_user_t));
+				sscanf(threadInfo->line, "%8s %13s %8s", toCrack->userInfo.username, toCrack->userInfo.hashed, toCrack->userInfo.known);
+
+				int unknownLength = strlen(toCrack->userInfo.known + getPrefixLength(toCrack->userInfo.known));
+
+
+				getSubrange(unknownLength, threadInfo->threadCount, threadInfo->id, &toCrack->firstIndex, &toCrack->count);
+				doCrack(toCrack, threadInfo->id);
+
+				threadInfo->line = NULL;
+				pthread_mutex_unlock(&threadInfo->mutex);
+				free(toCrack);
+
+		}
+		return NULL;
+}
+
+
+
+int start(int thread_count) {
+	total = 0;
+	success = 0;
+	password = NULL;
+	terminateThreads = 0;
+    int i;
+    size_t buf_len = 0;
+    char *line = NULL;
+	pthread_t * threads = calloc(thread_count, sizeof(pthread_t));
+	thread_info_t * threadInfos = calloc(thread_count, sizeof(thread_info_t));
+
+	for (i = 0; i < thread_count; ++i) {
+			threadInfos[i].threadCount = thread_count;
+			threadInfos[i].id = i + 1;
+			threadInfos[i].line = NULL;
+			pthread_mutex_init(&threadInfos[i].mutex, NULL);
+			pthread_create(&threads[i], NULL, runCracker, (void*)&threadInfos[i]);
+	}
+
+    while (getline(&line, &buf_len, stdin) != -1) {
+        double start_cpu_time = getCPUTime();
+        total++;
+        stop = 0;
+        totalHashes = 0;
+        password = NULL;
+        double start = getTime();
+        char username [9]; 
+        sscanf(line, "%8s", username);
+        printf("Start %s\n", username);
+
+		for (i = 0; i < thread_count; ++i) {
+			pthread_mutex_lock(&threadInfos[i].mutex);
+			threadInfos[i].line = line;
+			pthread_mutex_unlock(&threadInfos[i].mutex);
+		}	
+	
+		pthread_cond_broadcast(&threadsWait);
+	
+		pthread_mutex_lock(&stopLock);
+		while (!stop) {pthread_cond_wait(&mainWait, &stopLock);}
+		pthread_mutex_unlock(&stopLock);
+
+        double elapsed = getTime() - start;
+        if (password) {
+            success++;
+            printf("Password for %s is %s (%d hashes in %.2f seconds)\n", username, password, totalHashes, elapsed);           
+        } else {
+            printf("Password for %s not found (%d hashes in %.2f seconds)\n", username, totalHashes, elapsed);
+        }
+        
+        double total_cpu_time = getCPUTime() - start_cpu_time; 
+        printf("Total CPU time: %.2f seconds.\n", total_cpu_time);
+        printf("CPU usage: %.2fx\n", total_cpu_time / elapsed);
+        printf("\n");
+        free(password);
+    }
+
+	pthread_mutex_lock(&termLock);
+	pthread_cond_broadcast(&threadsWait);
+	terminateThreads = 1;
+	pthread_mutex_unlock(&termLock);	
+
+	for (i = 0; i < thread_count; ++i) {
+        pthread_join(threads[i], NULL);
+    }
+
+    free(threads);
+    free(line);
+    return 0;
+}
