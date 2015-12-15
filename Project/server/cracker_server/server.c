@@ -3,64 +3,37 @@
 #include "server.h"
 #include "utils.h"
 
-#define min(a, b) (a < b ? a : b)
-
-typedef struct connectionData {
-	struct connectionData * next;
-	char * dataToSend, * dataIter;
-	ssize_t dataSize;
-	int fd;
-} connectionData;
+#define min(a, b) (a < b ? a : b)`
 
 volatile sig_atomic_t shouldStop = 0;
 int serverFd = 0;
-connectionData * head = NULL;
-int selfPipe[2];
-
-connectionData * newConnectionData(int fd) {
-	connectionData * result = calloc(sizeof(connectionData), 1);
-	result->fd = fd;
-	result->next = head;
-	head = result;
-	return result;
-}
-
-void cleanupConnectionData() {
-	connectionData * iter = head;
-	while (iter) {
-		connectionData * nextiter = iter->next;
-		free(iter->dataToSend);
-		free(iter);
-		iter = nextiter;
-	}
-	head = NULL;
-}
 
 int makeServerSocket(const char * port) {
+	
+	int socketFd = socket(AF_INET, SOCK_STREAM, 0);
+	if (socketFd < 0) {
+		perror("Socket failed");
+		exit(EXIT_FAILURE);
+	}
+
 	struct addrinfo info, * result;
 	memset(&info, 0, sizeof(info));
 
 	info.ai_family = AF_INET;
-	info.ai_socktype = AI_PASSIVE;
-	
+	info.ai_socktype = SOCK_STREAM;
+	info.ai_flags = AI_PASSIVE;	
 
+	fprintf(stderr, "Listening on port %s\n", port);
 	int addrInfoError = getaddrinfo(NULL, port, &info, &result);
 	if (addrInfoError) {
 		fprintf(stderr, "GetAddrInfo failed: %s\n", gai_strerror(addrInfoError));
 		exit(EXIT_FAILURE);
 	}
 
-	//nt socketFd = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, result->ai_flags);
-	int socketFd = socket(result->ai_family, result->ai_socktype, result->ai_flags);
-	if (socketFd < 0) {
-		perror("Socket failed");
-		exit(EXIT_FAILURE);
-	}
-
 	int optval = 1;
 	setsockopt(socketFd, SOL_SOCKET, SO_REUSEPORT, &optval, sizeof(optval));
 
-	int bindError = bind(socketFd, (struct sockaddr*)result->ai_addr, result->ai_addrlen);
+	int bindError = bind(socketFd, result->ai_addr, result->ai_addrlen);
 	if (bindError) {
 		perror("Bind Failed\n");
 		exit(EXIT_FAILURE);
@@ -80,88 +53,53 @@ void stopFunction() {
 	shouldStop = 1;
 	close(serverFd);
 	serverFd = 0;
-	write(selfPipe[1], "", 1);
 }
 
 void* acceptData(void * in) {
-	int epollFd = (int)(long)in;
-	while (!shouldStop) {
-		struct epoll_event event;
-		memset(&event, 0, sizeof(event));
-		while(epoll_wait(epollFd, &event, 1, -1) < 0 && errno == EINTR && !shouldStop) {
-			errno = 0;
-		}
-		if (shouldStop) break;
-		fprintf(stderr, "Epoll event fired!\n");
-	
-		connectionData * data = event.data.ptr;
+	int clientFd = (int)(long)in;
+	if (clientFd < 0)
+		return NULL;
 
-		if (event.events & EPOLLOUT) {
-			fprintf(stderr, "Server Writing\n");
-			if (data->dataToSend) {
-				fprintf(stderr, "Writing %s to client!\n", data->dataIter);
-				ssize_t written = write(data->fd, data->dataIter, data->dataSize);
-				if (written >= 0) {
-					data->dataIter += written;
-					data->dataSize -= written;
-				} else {
-					perror("Write failed");
-				}
-				if (data->dataSize <= 0) {
-					free(data->dataToSend);
-					data->dataToSend = NULL;
-					data->dataIter = NULL;
-					event.events = EPOLLIN;
-					epoll_ctl(epollFd, EPOLL_CTL_MOD, data->fd, &event);
-				}
-			}
-		}
-		if (event.events & EPOLLIN) {
-			fprintf(stderr, "Server Reading\n");
-			char * readFromClient = NULL;
-			ssize_t size = readFromFd(data->fd, &readFromClient);
-			fprintf(stderr, "Server done reading\n");
-			if (size < 0) { // In EOF state.
-				close(data->fd);
-				epoll_ctl(epollFd, EPOLL_CTL_DEL, data->fd, &event);
-				printf("Client disconnected\n");
+	FILE * clientFile = fdopen(clientFd, "r+");	
+	char * line = NULL;
+	size_t size = 0;
+
+
+	while (getline(&line, &size, clientFile) > 0) {
+		if (strcmp(line, "DIS_GET_INPUT\n") == 0) {
+			printf("GOT REQUEST\n");
+			char * nextInput = NULL;
+			size_t len = getNextInput(&nextInput);
+			if (nextInput == NULL) {
+				fprintf(stderr, "OUT OF INPUT\n");
+				raise(SIGTERM);
+				fprintf(clientFile, "DIS_DONE\n");
 			} else {
-				fprintf(stderr, "From client: %s\n", readFromClient);
-				char * body = readFromClient;
-				while (*body && *body != ' ') body++;
-				char * instruction = readFromClient;
-				*body = '\0';
-				body++;
-				if (strcmp(instruction, REDUCE_INSTRUCTION) == 0) { 
-					if (!body) {
-						fprintf(stderr, "Malformed result of size %ld : %s ", size, body);
-						exit(EXIT_FAILURE);
-					}
-					reduceResult(body, size);
-				}
-				else if (strcmp(instruction, GET_INSTRUCTION) == 0 && !data->dataToSend) {
-					char * newInput;
-					ssize_t inputSize = getNextInput(&newInput);
-					fprintf(stderr, "About to send %s to client!\n", newInput);
-					free(data->dataToSend);
-					data->dataToSend = data->dataIter = newInput;
-					data->dataSize = inputSize;
-					event.events = EPOLLOUT | EPOLLIN;
-					epoll_ctl(epollFd, EPOLL_CTL_MOD, data->fd, &event);
-				}
+				printf("SENDING INPUT: %s", nextInput);
+				fprintf(clientFile, nextInput);
 			}
-			free(readFromClient);
+		} else {
+			printf("Got data from client %s", line);
 		}
+		if (shouldStop)
+			break;
 	}
-	close(epollFd);
+
+	free(line);
+	fclose(clientFile);
 	return NULL;
 }
 
 
 
-int main() {
-	initServer();
-	pipe(selfPipe); // Signal handlers acting weird with epoll, according to the internet apparently a pipe to yourself works.
+int main(int argc, char *argv[]) {
+	if (argc != 2) {
+		fprintf(stderr, "Usage ./server port\n");
+		exit(EXIT_FAILURE);
+	} 
+	char * port = argv[1];
+	initServer(port);
+	fprintf(stderr, "Server Started\n");
 	struct sigaction stopper;
 	memset(&stopper, 0, sizeof(stopper));
 	stopper.sa_handler = stopFunction;
@@ -169,34 +107,23 @@ int main() {
 	sigaction(SIGTERM, &stopper, NULL);
 
 	serverFd = makeServerSocket(port);
-	struct epoll_event event;
-	memset(&event, 0, sizeof(event));
-	event.events = EPOLLIN;
-	int epollFd = epoll_create(1);
-	epoll_ctl(epollFd, EPOLL_CTL_ADD, selfPipe[0], &event);
-	
-	pthread_t readerThread;
-	pthread_create(&readerThread, NULL, acceptData, (void*)(long)epollFd);
+	fprintf(stderr, "Server socket open on port %s! with fd %d\n", port, serverFd);
 
 	while (!shouldStop) {
-		int newConnectionFd = accept4(serverFd, NULL, NULL, SOCK_NONBLOCK);
-		printf("New connection received with fd %d\n", newConnectionFd);
-		connectionData * data = newConnectionData(newConnectionFd);
-		event.data.ptr = data;
-		if (newConnectionFd >= 0)
-			epoll_ctl(epollFd, EPOLL_CTL_ADD, newConnectionFd, &event);
-		else if (!shouldStop) {
+		fprintf(stderr, "Now accepting new connections\n");
+		int clientFd = accept(serverFd, NULL, NULL);
+		fprintf(stderr, "New connection received with fd %d\n", clientFd);
+		pthread_t newThread;
+		pthread_create(&newThread, NULL, acceptData, (void*)(long)clientFd);
+		pthread_detach(newThread);
+		if (clientFd < 0 && !shouldStop) {
 			perror("Accept failed");
 			break;
 		}
 	}
 
 	printf("SIGINT or SIGTERM received, stopping\n");
-	pthread_join(readerThread, NULL);
-	printf("Finished waiting for reader, exiting\n");
-	cleanupConnectionData();
-	close(selfPipe[0]);
-	close(selfPipe[1]);
 	closeServer();	
+	pthread_exit(NULL);
 	return 0;
 }

@@ -9,32 +9,29 @@
 #include "distributed.h"
 
 extern char ** environ;
-const char * OUTPUT_HEADER = "DIS_REDUCE ";
+const char * OUTPUT_HEADER = "DIS_REDUCE\n";
 
 void runProgram(char * program, char * input, char * serverIP, char * serverPort, char * arguments[]) {
     int inputFile = open(input, O_RDONLY);
     int output[2];
-    int error[2];
     pipe(output);
-    pipe(error);
     pid_t childPid = fork();
     if (!childPid) {
+		char * cwd = get_current_dir_name();
+		printf("Running program %s from directory %s\n", program, cwd);
+		free(cwd);
         close(output[0]);
-        close(error[0]);
         setenv("server_ip", serverIP, 0);
         dup2(inputFile,  0);
         dup2(output[1], 1);
-        dup2(error[1], 2);
         execvpe(program, arguments, environ);
         perror("EXEC FAILED\n");
         exit(2);
     } else {
 		connectToServer(serverIP, serverPort);	
         close(output[1]);
-        close(error[1]);
         close(inputFile);
         FILE * clientOutput = fdopen(output[0], "r");
-        FILE * clientError = fdopen(error[0], "r");
 
         char * line = NULL;
         size_t length = 0;
@@ -49,7 +46,6 @@ void runProgram(char * program, char * input, char * serverIP, char * serverPort
         free(line);
 
         fclose(clientOutput);
-        fclose(clientError);
         fflush(NULL);
     }
     waitpid(childPid, NULL, 0);

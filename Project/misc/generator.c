@@ -10,7 +10,7 @@
 const char * names[] = {"Alice", "Bob", "Ted"};
 const size_t NAMES_ARRAY_LENGTH = 3;
 const size_t NAME_LENGTH = 8;
-const size_t PASSWORD_LENGTH = 14;
+const size_t PASSWORD_LENGTH = 8;
 
 int randomM(int max) {
 	return rand() % max;

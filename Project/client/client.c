@@ -18,13 +18,11 @@ const char * serverFilePath = "/home/miranti2/client.tar.gz";
 const char * clientFilePath = "./client.tar.gz";
 const char * client = "./clientFolder";
 const char * executable = "./client";
-const char * port = "2000";
 const char * decompressCommand = "tar -xvzf %s -C ./clientFolder";
-const char * dataRequest = "DIS_GET_INPUT ";
-const char * outHeader;
+const char * dataRequest = "DIS_GET_INPUT\n";
 const size_t requestLen = 14;
 const char * wrapperCommand = "./client_wrapper ./clientFolder ./client ./inputFile.txt 127.0.0.1 2000";
-const char * inputFile = "./clientFolder/inputFile.txt";
+const char * inputFile = "./inputFile.txt";
 
 void initLibsshOrDie() {
     int result = libssh2_init(0);
@@ -157,7 +155,7 @@ void getClient(char * serverAddress) {
 
 #define PREDICTED_LENGTH 512
 
-void executeClient(const char * serverAddress) {
+void executeClient(const char * serverAddress, char * port) {
 	char * path = realpath(clientFilePath, NULL);
 	char * command;
 	asprintf(&command, decompressCommand, path);
@@ -194,11 +192,11 @@ void executeClient(const char * serverAddress) {
 
 int main(int argc, char * argv[]) {
     initLibsshOrDie();
-    if (argc == 3 && strcmp(argv[2], "-r") == 0) {
+    if (argc == 4 && strcmp(argv[3], "-r") == 0) {
 		printf("Getting client!\n");
         getClient(argv[1]);
     }
     libssh2_exit();
-    executeClient(argv[1]);
+    executeClient(argv[1], argv[2]);
     return 0;
 }
